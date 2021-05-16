@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mahmedabid/virtual-lolly"
+    "url": "git+https://github.com/Mahmedabid/virtual-lolly.git"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
@@ -24,12 +24,10 @@
     "@apollo/client": "^3.3.18",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
-    "apollo-server-lambda": "^2.24.0",
     "cross-fetch": "^3.1.4",
-    "faunadb": "^4.2.0",
     "formik": "^2.2.6",
     "gatsby": "^3.5.0",
-    "graphql": "^15.5.0",
+    "gatsby-source-graphql": "^3.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "shortid": "^2.2.16",
