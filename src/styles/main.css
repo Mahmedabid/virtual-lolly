@@ -1,6 +1,7 @@
 body {
     text-align: center;
     background-color: #582f50;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -102,12 +103,8 @@ h1:hover {
     text-align: left;
     font-style: italic;
     font-size: 1.1em;
-    width: 300px;
+    width: 22em;
 }
-
-/* .lollyForm .MuiInputBase-input {
-
-} */
 
 .inputs {
     font-size: .9em;
@@ -148,11 +145,8 @@ Link {
         flex-direction: row;
         margin: 10px;
     }
-}
 
-@media screen and (max-width: 640px) and (min-width: 551px) {
     .lollyForm {
-        width: 260px;
+        width: 15em;
     }
 }
-
