@@ -98,8 +98,12 @@ h1:hover {
     width: 300px;
 }
 
-.lollyForm .MuiInputBase-input {
-    border-color: white;
+/* .lollyForm .MuiInputBase-input {
+
+} */
+.comment .MuiInputBase-input {
+    /* height: 200px !important; */
+    overflow-y: scroll !important;
 }
 
 .inputs {

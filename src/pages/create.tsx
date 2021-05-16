@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
-import { InputBase, TextField } from '@material-ui/core';
+import { InputBase, TextField, TextareaAutosize } from '@material-ui/core';
 
 const Query = gql`{
     hello
@@ -110,7 +110,7 @@ const create = () => {
                             <div className="lollyForm">
                                 <Field className="inputs" helperText={formik.touched.receiver ? formik.errors.receiver : ""} error={formik.touched.receiver && Boolean(formik.errors.receiver)} name="receiver" type="text" as={TextField} label="To" variant="outlined" />
                                 <br />
-                                <Field className="inputs" helperText={formik.touched.msg ? formik.errors.msg : ""} error={formik.touched.msg && Boolean(formik.errors.msg)} name="msg" type="text" as={TextField} label="Say Something..." variant="outlined" />
+                                <Field className="inputs comment" helperText={formik.touched.msg ? formik.errors.msg : ""} error={formik.touched.msg && Boolean(formik.errors.msg)} name="msg" type="text" as={TextField} label="Say Something..." variant="outlined" />
                                 <br />
                                 <Field className="inputs" helperText={formik.touched.sender ? formik.errors.sender : ""} error={formik.touched.sender && Boolean(formik.errors.sender)} name="sender" type="text" as={TextField} label="From" variant="outlined" />
                                 <br />
