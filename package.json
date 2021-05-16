@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mahmedabid/virtual-lolly.git"
+    "url": "https://github.com/Mahmedabid/virtual-lolly"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
