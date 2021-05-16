@@ -72,6 +72,13 @@ h1:hover {
     margin-left: -10px !important;
     margin-right: -10px !important;
 }
+.lollyForm .MuiOutlinedInput-input {
+    color: white;
+}
+
+.MuiFormLabel-root {
+    color: white !important;
+}
 
 .CreateLolly {
     display: flex;
