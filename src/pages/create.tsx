@@ -30,7 +30,7 @@ const create = () => {
     const [addLolly, { loading, error }] = useMutation(addLollyMutation)
     const { data } = useQuery(Query)
     console.log(data);
-error? console.log(error): null;
+
     const initialValues = {
         c1: '#d323d3',
         c2: "#5823d3",
