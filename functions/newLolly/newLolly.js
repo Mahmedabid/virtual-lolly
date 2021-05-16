@@ -35,7 +35,7 @@ const array =  [{c1: 'asd', c2: 'sad', c3: 'qe', msg: 'qqewe', receiver: 'asdqwe
 
 const resolvers = {
   Query: {
-    lolly: () => 'hello'
+    hello: () => 'hello'
   },
   Mutation: {
     addLolly: async(_, args) => {

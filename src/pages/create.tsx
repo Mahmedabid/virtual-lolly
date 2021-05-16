@@ -7,8 +7,10 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
 
-const Query = gql`
-    Query hello
+const Query = gql`{
+    hello {
+    }
+}
 `
 
 const addLollyMutation = gql`
