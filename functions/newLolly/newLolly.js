@@ -6,9 +6,10 @@ const shortid = require("shortid");
 
 const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
 
+// lolly: [Lolly!]
 const typeDefs = gql`
 type Query {
-  lolly: [Lolly!]
+  hello: String!
 }
 type Lolly {
   c1: String!
@@ -30,10 +31,11 @@ type Mutation{
     lollyPath: String!): Lolly,
 }
 `
+const array =  [{c1: 'asd', c2: 'sad', c3: 'qe', msg: 'qqewe', receiver: 'asdqwe', sender: '13', lollyPath: '12324'}];
 
 const resolvers = {
   Query: {
-    lolly: () => [{c1: 'asd', c2: 'sad', c3: 'qe', msg: 'qqewe', receiver: 'asdqwe', sender: '13', lollyPath: '12324'}] 
+    lolly: () => 'hello'
   },
   Mutation: {
     addLolly: async(_, args) => {
