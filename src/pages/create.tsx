@@ -9,6 +9,7 @@ import { InputBase, TextField } from '@material-ui/core';
 
 const Query = gql`{
     hello {
+        hello
     }
 }
 `
