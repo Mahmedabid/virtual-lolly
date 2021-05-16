@@ -1,0 +1,151 @@
+body {
+    text-align: center;
+    background-color: #582f50;
+}
+
+h1 {
+    color: #fff;
+    text-shadow: #fa73d9 0 0 8px;
+    font-size: 320%;
+    cursor: pointer;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(110, 102, 102, 0.397);
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerP {
+    font-style: italic;
+    color: #ddd;
+    text-shadow: #fa73d9 1px 1px 4px;
+    margin-top: 1.5em;
+    margin-bottom: 3em;
+    line-height: 1.2;
+}
+
+button, .button {
+    margin-top: 1em;
+    box-shadow: 0 0 6px #fa73d9;
+    border: 2px solid #fa73d9;
+    background-color: transparent;
+    font-size: .9em;
+    color: #fa73d9;
+    padding: 1em 2em;
+    border-radius: 4em;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.button {
+    padding: .8em 2em;
+}
+
+button:hover, .button:hover {
+    background-color: #fa73d9;
+    color: #222;
+}
+
+h1:hover {
+    text-shadow: #fa73d9 0 0 16px;
+}
+
+.colorPick {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: 4rem;
+}
+
+.inputColor .MuiInputBase-input {
+    height: 60px !important;
+    width: 60px !important;
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+}
+
+.CreateLolly {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputColor {
+    display: flex;
+    flex-direction: column;
+    margin-top: -100px;
+    margin-right: 30px;
+}
+
+.lollyForm {
+    padding: 1em 2em;
+    margin-bottom: 1.5em;
+    background-color: rgba(19, 19, 19, 0.685);
+    box-shadow: 0 0 10px rgb(0 0 0 / 60%);
+    text-align: left;
+    font-style: italic;
+    font-size: 1.1em;
+    width: 300px;
+}
+
+.lollyForm .MuiInputBase-input {
+    border-color: white;
+}
+
+.inputs {
+    font-size: .9em;
+    width: 100%;
+    border: 1px solid #fa73d9;
+    background-color: rgb(49, 61, 71);
+    box-shadow: 0 0 6px #8c73fa;
+    margin-bottom: 6px;
+    margin-top: 30px !important;
+}
+
+Link {
+    text-decoration: none;
+}
+
+.Lollies {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media screen and (max-width: 550px) {
+    .CreateLolly {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+    }
+
+    .colorPick {
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .inputColor {
+        flex-direction: row;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 640px) and (min-width: 551px) {
+    .lollyForm {
+        width: 260px;
+    }
+}
+
