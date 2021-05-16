@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
-import { InputBase, TextField, TextareaAutosize } from '@material-ui/core';
+import { InputBase, TextField } from '@material-ui/core';
 
 const Query = gql`{
     hello
