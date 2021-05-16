@@ -1,5 +1,5 @@
 [build]
-    command ="npm install && gatsby build"
+    command ="npm install && npm run build && gatsby build && npm install"
     publish ="public"
     functions="functions"
 
