@@ -27,14 +27,10 @@ const addLollyMutation = gql`
 
 const create = () => {
 
-    const [addLolly, { loading }] = useMutation(addLollyMutation)
+    const [addLolly, { loading, error }] = useMutation(addLollyMutation)
     const { data } = useQuery(Query)
     console.log(data);
-    
-    const [Top, setTop] = useState('#d323d3');
-    const [Middle, setMiddle] = useState("#5823d3");
-    const [Bottom, setBottom] = useState("#2384d3");
-
+error? console.log(error): null;
     const initialValues = {
         c1: '#d323d3',
         c2: "#5823d3",
@@ -88,7 +84,6 @@ const create = () => {
                 }
                 onSubmit={
                     (values, { resetForm }) => {
-                        console.log(values);
                         resetForm({
                             values: initialValues
                         });

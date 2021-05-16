@@ -1,12 +1,10 @@
 const { ApolloServer, gql } = require('apollo-server-lambda')
+
 const faunadb = require("faunadb");
 const q = faunadb.query;
-require("dotenv").config();
 const shortid = require("shortid");
+require("dotenv").config();
 
-const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
-
-// lolly: [Lolly!]
 const typeDefs = gql`
 type Query {
   hello: String!
@@ -21,38 +19,31 @@ type Lolly {
   lollyPath: String!
 }
 type Mutation{
-  addLolly( 
-    c1: String!,
-    c2: String!,
-    c3: String!,
-    sender: String!,
-    msg: String!,
-    receiver: String!,
-    lollyPath: String!): Lolly,
+  addLolly ( c1: String!, c2: String!, c3: String!, sender: String!, msg: String!, receiver: String!): Lolly,
 }
 `
-const array =  [{c1: 'asd', c2: 'sad', c3: 'qe', msg: 'qqewe', receiver: 'asdqwe', sender: '13', lollyPath: '12324'}];
 
 const resolvers = {
   Query: {
-    hello: () => 'hello'
+    hello: () => {
+      return 'Hello, Lolly!'
+    },
   },
-  Mutation: {
-    addLolly: async(_, args) => {
+  Mutation : {
+    addLolly: async (_, args) => {
       
+      const client = new faunadb.Client({secret: process.env.FAUNADB_SECRET});
       const id = shortid.generate();
-      args.lollyPath = id;
+      args.lollyPath = id
 
-      const results = await client.query(
+      const result = await client.query(
         q.Create(q.Collection("lolly"), {
-          data: args,
+          data: args
         })
       );
 
-      console.log('result', result);
-      console.log('result', result.data);
-      return results.data
-    }
+      return result.data
+    },
   }
 }
 
@@ -61,6 +52,4 @@ const server = new ApolloServer({
   resolvers,
 })
 
-const handler = server.createHandler()
-
-module.exports = { handler }
+exports.handler = server.createHandler()
