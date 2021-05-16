@@ -12,7 +12,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "postinstall": "apollo-server-lambda install && graphql install && faunadb install"
+    "postinstall": "npm install apollo-server-lambda graphql faunadb"
   },
   "repository": {
     "type": "git",
