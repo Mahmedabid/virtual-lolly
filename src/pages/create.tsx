@@ -8,9 +8,7 @@ import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
 
 const Query = gql`{
-    hello {
-        hello
-    }
+    hello
 }
 `
 
