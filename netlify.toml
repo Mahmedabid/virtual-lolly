@@ -1,4 +1,7 @@
 [build]
-    command ="gatsby build"
-    publish ="public"
-    functions="functions"
+  command = "npm run build && cd functions && npm install"
+  functions = "functions"
+  publish = "public"
+
+ [[plugins]]
+package = "@netlify/plugin-functions-install-core"

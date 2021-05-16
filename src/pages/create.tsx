@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import Header from "../components/Header";
 import { Lolly } from "../components/Lolly";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
+
+const Query = gql`
+    Query hello
+`
 
 const addLollyMutation = gql`
     mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!) {
@@ -23,7 +27,9 @@ const addLollyMutation = gql`
 const create = () => {
 
     const [addLolly, { loading }] = useMutation(addLollyMutation)
-
+    const { data } = useQuery(Query)
+    console.log(data);
+    
     const [Top, setTop] = useState('#d323d3');
     const [Middle, setMiddle] = useState("#5823d3");
     const [Bottom, setBottom] = useState("#2384d3");
