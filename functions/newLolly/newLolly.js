@@ -32,7 +32,7 @@ const resolvers = {
   Mutation : {
     addLolly: async (_, args) => {
       try {
-        if (process.env.FAUNADB_ADMIN_SECRET) {
+        if (process.env.FAUNADB_SECRET) {
           const client = new faunadb.Client({secret: process.env.FAUNADB_SECRET});
       const id = shortid.generate();
       args.lollyPath = id
