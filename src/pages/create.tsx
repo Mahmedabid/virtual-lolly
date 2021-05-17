@@ -27,7 +27,7 @@ const addLollyMutation = gql`
 
 const create = () => {
 
-    const [addLolly, { loading, error }] = useMutation(addLollyMutation)
+    const [addLolly, { loading }] = useMutation(addLollyMutation)
     const { data } = useQuery(Query)
     console.log(data);
 
