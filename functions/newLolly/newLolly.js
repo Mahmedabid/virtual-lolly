@@ -31,8 +31,9 @@ const resolvers = {
   },
   Mutation : {
     addLolly: async (_, args) => {
-      
-      const client = new faunadb.Client({secret: process.env.FAUNADB_SECRET});
+      try {
+        if (process.env.FAUNADB_ADMIN_SECRET) {
+          const client = new faunadb.Client({secret: process.env.FAUNADB_SECRET});
       const id = shortid.generate();
       args.lollyPath = id
 
@@ -43,6 +44,12 @@ const resolvers = {
       );
 
       return result.data
+        }
+      }
+      catch(error) {
+        console.log(error);
+      }
+      
     },
   }
 }
