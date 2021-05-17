@@ -6,6 +6,11 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
+import LollyPage from '../components/LollyPage';
+import { navigate } from 'gatsby-link';
+import shortid from 'shortid';
+
+const id = shortid.generate();
 
 const Query = gql`{
     hello
@@ -13,14 +18,15 @@ const Query = gql`{
 `
 
 const addLollyMutation = gql`
-    mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!) {
-        addLolly(receiver: $receiver, msg: $msg, sender: $sender, c1: $c1, c2: $c2, c3: $c3) {
+    mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!, $lollyPath: String!) {
+        addLolly(receiver: $receiver, msg: $msg, sender: $sender, c1: $c1, c2: $c2, c3: $c3, lollyPath: $lollyPath) {
             msg
             receiver
             sender
             c1
             c2
             c3
+            lollyPath
         }
     }
 `
@@ -55,9 +61,11 @@ const create = () => {
     const submitLollyForm = (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
         addLolly({
             variables: {
-                c1, c2, c3, msg, sender, receiver
+                c1, c2, c3, msg, sender, receiver, lollyPath: id
             }
-        })
+        });
+        LollyPage(c1, c2, c3, msg, sender, receiver, id);
+        navigate(`/lolly/${id}`);
     }
 
     const Load = () => {
