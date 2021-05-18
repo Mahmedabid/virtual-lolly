@@ -28,7 +28,7 @@ const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
 
 const resolvers = {
   Query: {
-    getLolly: async(_, args) => {
+    getLolly: async (_, args) => {
       try {
         const result = await client.query(
           q.Get(q.Match(q.Index("lolly_path"), args.lollyPath))
@@ -36,11 +36,11 @@ const resolvers = {
 
         return result.data
       }
-      catch(error) {
+      catch (error) {
         console.log(error);
       }
     },
-    allLolly: async(_, args) => {
+    allLolly: async (_, args) => {
       try {
         const result = await client.query(
           q.Get(q.Match(q.Index('lollies')))
@@ -61,15 +61,15 @@ const resolvers = {
           })
         );
         axios
-            .post(
-              process.env.HOOK
-            )
-            .then(function (response) {
-              console.log(response);
-            })
-            .catch(function (error) {
-              console.error(error);
-            });
+          .post(
+            "https://api.netlify.com/build_hooks/60a20faca9d48696f31f63c3"
+          )
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
 
         return result.data
       }
