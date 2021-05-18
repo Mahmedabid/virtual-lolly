@@ -70,7 +70,7 @@ const resolvers = {
           .catch(function (error) {
             console.error(error);
           });
-
+          console.log(result);
         return result.data
       }
       catch (error) {

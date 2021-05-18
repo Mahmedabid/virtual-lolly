@@ -23,9 +23,10 @@ require("dotenv").config();
 //   })
 //     }
 //   asd();
-
   
 exports.createPages = async ({ graphql, actions }) => {
+
+  const LollyTemplate = path.resolve(`./src/components/LollyTemplate.tsx`);
 
     try {
         var client = new faunadb.Client({
@@ -40,9 +41,15 @@ exports.createPages = async ({ graphql, actions }) => {
             
           result.data.forEach((lolly) => {
             actions.createPage({
-              path: `lolly/${lolly.data.lollyPath}`,
-              component: require.resolve(`./src/components/LollyPage.tsx`),
+              path: `viewlolly/${lolly.data.lollyPath}`,
+              component: LollyTemplate,
               context: {
+                c1: lolly.data.c1,
+                c2: lolly.data.c2,
+                c3: lolly.data.c3,
+                msg: lolly.data.msg,
+                sender: lolly.data.sender,
+                receiver: lolly.data.c1,
                 lollyPath: lolly.data.lollyPath,
               },
             });

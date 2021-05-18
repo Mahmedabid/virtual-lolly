@@ -8,6 +8,9 @@ h1 {
     color: #fff;
     text-shadow: #fa73d9 0 0 8px;
     font-size: 320%;
+}
+
+.headerH {
     cursor: pointer;
 }
 

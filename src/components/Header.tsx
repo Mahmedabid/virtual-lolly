@@ -4,7 +4,7 @@ import React from 'react'
 const Header = () => {
     return (
         <div>
-            <h1 onClick={() => navigate('/')}>Virtual Lolly</h1>
+            <h1 className="headerH" onClick={() => navigate('/')}>Virtual Lolly</h1>
             <p className="headerP">Enjoy your virtual Lolly with friends</p>
         </div>
     )
