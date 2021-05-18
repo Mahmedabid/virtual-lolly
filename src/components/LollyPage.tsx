@@ -16,7 +16,11 @@ const GetLolly = gql`
     }
 `
 
-const LollyPage = (lollyPath: string) => {
+interface PageProps {
+    lollyPath: string
+}
+
+const LollyPage: React.FC<PageProps> = ({lollyPath}) => {
 
     const {loading, error, data} = useQuery(GetLolly, {
         variables: {
