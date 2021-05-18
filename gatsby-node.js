@@ -44,12 +44,6 @@ exports.createPages = async ({ graphql, actions }) => {
               component: require.resolve(`./src/components/LollyPage.tsx`),
               context: {
                 lollyPath: lolly.data.lollyPath,
-                sender: lolly.data.sender,
-                reciever: lolly.data.reciever,
-                msg: lolly.data.msg,
-                c1: lolly.data.c1,
-                c2: lolly.data.c2,
-                c3: lolly.data.c3
               },
             });
           });

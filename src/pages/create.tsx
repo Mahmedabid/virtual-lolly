@@ -2,7 +2,7 @@ import React from 'react';
 import Header from "../components/Header";
 import { Lolly } from "../components/Lolly";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
@@ -11,11 +11,6 @@ import { navigate } from 'gatsby-link';
 import shortid from 'shortid';
 
 const id = shortid.generate();
-
-const Query = gql`{
-    hello
-}
-`
 
 const addLollyMutation = gql`
     mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!, $lollyPath: String!) {
@@ -34,8 +29,6 @@ const addLollyMutation = gql`
 const create = () => {
 
     const [addLolly, { loading }] = useMutation(addLollyMutation)
-    const { data } = useQuery(Query)
-    console.log(data);
 
     const initialValues = {
         c1: '#d323d3',
@@ -58,14 +51,18 @@ const create = () => {
             .required('Message is Required'),
     });
 
+    const lollyPages = (id: string) => {
+        return (<LollyPage lollyPath={id} />)
+    }
+
     const submitLollyForm = (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
         addLolly({
             variables: {
                 c1, c2, c3, msg, sender, receiver, lollyPath: id
             }
         });
-        LollyPage(c1, c2, c3, msg, sender, receiver, id);
         navigate(`/lolly/${id}`);
+        lollyPages(id);
     }
 
     const Load = () => {

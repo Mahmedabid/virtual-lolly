@@ -3,10 +3,12 @@ const { ApolloServer, gql } = require('apollo-server-lambda')
 const faunadb = require("faunadb");
 const q = faunadb.query;
 require("dotenv").config();
+const axios = require("axios");
 
 const typeDefs = gql`
 type Query {
-  hello: String!
+  allLolly : [Lolly!]
+  getLolly(lollyPath:String!) : Lolly
 }
 type Lolly {
   c1: String!
@@ -22,21 +24,52 @@ type Mutation{
 }
 `
 
+const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
+
 const resolvers = {
   Query: {
-    hello: () => {
-      return 'Hello, Lolly!'
+    getLolly: async(_, args) => {
+      try {
+        const result = await client.query(
+          q.Get(q.Match(q.Index("lolly_path"), args.lollyPath))
+        );
+
+        return result.data
+      }
+      catch(error) {
+        console.log(error);
+      }
+    },
+    allLolly: async(_, args) => {
+      try {
+        const result = await client.query(
+          q.Get(q.Match(q.Index('lollies')))
+        );
+
+        return result.data
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   Mutation: {
     addLolly: async (_, args) => {
       try {
-        const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
         const result = await client.query(
           q.Create(q.Collection("lolly"), {
             data: args
           })
         );
+        axios
+            .post(
+              process.env.HOOK
+            )
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.error(error);
+            });
 
         return result.data
       }
