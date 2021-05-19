@@ -6,7 +6,7 @@ require("dotenv").config();
 // var client = new faunadb.Client({
 //     secret: process.env.FAUNADB_SECRET,
 //   });
-//   async function asd(){
+//   async function test(){
 //     const result = await client.query(
 //         q.Get(q.Ref(q.Collection('lolly'), "298774386378277389"))
 //       );
@@ -22,7 +22,7 @@ require("dotenv").config();
 //     console.log(lolly.data.c1);
 //   })
 //     }
-//   asd();
+//   test();
   
 exports.createPages = async ({ graphql, actions }) => {
 
@@ -58,4 +58,16 @@ exports.createPages = async ({ graphql, actions }) => {
     catch(error) {
         console.log(error);
     }
+}
+
+exports.onCreatePage = async ({page, actions}) => {
+  const {createPage} =  actions
+
+  if(page.path.match(/^\/viewlolly/)){
+      page.matchPath = "/viewlolly/*"
+
+      createPage(page)
+
+  }
+
 }

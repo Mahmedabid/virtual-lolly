@@ -6,7 +6,7 @@ import { useMutation } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
-import { navigate } from 'gatsby-link';
+import { navigate } from "@reach/router"
 import LollyTemplate from '../components/LollyTemplate';
 import gql from "graphql-tag";
 
@@ -48,18 +48,18 @@ const create = () => {
             .required('Message is Required'),
     });
 
-    const lollyPages = (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string, id: string) => {
-        return (<LollyTemplate c1={c1} c2={c2} c3={c3} msg={msg} sender={sender} receiver={receiver} lollyPath={id} />)
-    }
+    // const lollyPages = (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string, id: string) => {
+    //     return (<LollyTemplate c1={c1} c2={c2} c3={c3} msg={msg} sender={sender} receiver={receiver} lollyPath={id} />)
+    // }
 
-    const submitLollyForm = (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
-        addLolly({
+    const submitLollyForm = async(c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
+        await addLolly({
             variables: {
                 c1, c2, c3, msg, sender, receiver
             }
         }).then((response)=> {
-            navigate(`/viewlolly?${response.data.addLolly.lollyPath}`);
-            lollyPages(response.data.addLolly.c1, response.data.addLolly.c2, response.data.addLolly.c3, response.data.addLolly.msg, response.data.addLolly.sender, response.data.addLolly.receiver, response.data.addLolly.lollyPath);
+            navigate(`/${response.data.addLolly.lollyPath}`);
+            // lollyPages(response.data.addLolly.c1, response.data.addLolly.c2, response.data.addLolly.c3, response.data.addLolly.msg, response.data.addLolly.sender, response.data.addLolly.receiver, response.data.addLolly.lollyPath);
         });
     }
 
