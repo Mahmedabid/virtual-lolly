@@ -1,7 +1,7 @@
 import React from 'react';
 import { Lolly } from "../components/Lolly"
 import Header from "../components/Header";
-import { navigate } from '@reach/router';
+import { navigate } from 'gatsby';
 
 const IndexPage = () => {
 

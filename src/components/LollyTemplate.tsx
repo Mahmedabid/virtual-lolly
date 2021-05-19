@@ -10,9 +10,10 @@ interface PageProps {
     sender: string
     receiver: string
     lollyPath: string
+    path: string
 }
 
-const LollyTemplate: React.FC<PageProps> = ({ c1, c2, c3, msg, sender, receiver, lollyPath }) => {
+const LollyTemplate: any = ({ c1, c2, c3, msg, sender, receiver, lollyPath }) => {
 
     const path = `https://ahm-vlolly.netlify.app/lolly/${lollyPath}`;
     const [copySuccess, setCopySuccess] = useState('');

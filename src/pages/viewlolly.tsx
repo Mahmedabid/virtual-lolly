@@ -4,8 +4,8 @@ import React from 'react'
 import LollyTemplate from '../components/LollyTemplate';
 
 const GetLolly = gql`
-    query getLolly($lollyPath: String!) {
-        getLolly(lollyPath: $lollyPath) {
+    query getLolly($path: String!) {
+        getLolly(path: $path) {
             c1
             c2
             c3
@@ -19,11 +19,11 @@ const GetLolly = gql`
 
 export default (props: any) => {
     console.log(props);
-    
+    const path = location.pathname.replace("/viewlolly/", "")
 
     const { loading, error, data } = useQuery(GetLolly, {
         variables: {
-            lollyPath: props.location.search.slice(1)
+            path
         }
     });
 
@@ -40,7 +40,7 @@ export default (props: any) => {
         return (
             <div>
                 <Router basepath="/viewlolly">
-                    <LollyTemplate c1={data.getLolly.c1} c2={data.getLolly.c2} c3={data.getLolly.c3} msg={data.getLolly.msg} sender={data.getLolly.sender} receiver={data.getLolly.receiver} lollyPath={data.getLolly.lollyPath} />
+                    <LollyTemplate path={`/${data.getLolly.lollyPath}`} c1={data.getLolly.c1} c2={data.getLolly.c2} c3={data.getLolly.c3} msg={data.getLolly.msg} sender={data.getLolly.sender} receiver={data.getLolly.receiver} lollyPath={data.getLolly.lollyPath} />
                 </Router>
             </div>
         )

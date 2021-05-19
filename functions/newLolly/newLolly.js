@@ -9,7 +9,7 @@ const shortid = require("shortid");
 const typeDefs = gql`
 type Query {
   allLolly : [Lolly!]
-  getLolly(lollyPath:String!) : Lolly
+  getLolly(path:String!) : Lolly
 }
 type Lolly {
   c1: String!
@@ -29,10 +29,10 @@ const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
 
 const resolvers = {
   Query: {
-    getLolly: async (_, args) => {
+    getLolly: async (_, {path}) => {
       try {
         const result = await client.query(
-          q.Get(q.Match(q.Index("lolly_path"), args.lollyPath))
+          q.Get(q.Match(q.Index("lolly_path"), path))
         );
 
         return result.data

@@ -26,7 +26,7 @@ require("dotenv").config();
   
 exports.createPages = async ({ graphql, actions }) => {
 
-  const LollyTemplate = path.resolve(`./src/components/LollyTemplate.tsx`);
+  const LollyTemplate = require.resolve(`./src/components/LollyTemplate.tsx`);
 
     try {
         var client = new faunadb.Client({
@@ -41,7 +41,7 @@ exports.createPages = async ({ graphql, actions }) => {
             
           result.data.forEach((lolly) => {
             actions.createPage({
-              path: `viewlolly/${lolly.data.lollyPath}`,
+              path: `/${lolly.data.lollyPath}`,
               component: LollyTemplate,
               context: {
                 c1: lolly.data.c1,
@@ -60,3 +60,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }
 }
 
+exports.onCreatePage = async ({page, actions}) => {
+  const {createPage} =  actions
+
+  if(page.path.match(/^\/viewlolly/)){
+      page.matchPath = "/viewlolly/*"
+
+      createPage(page)
+
+  }
+
+}
