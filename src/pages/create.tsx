@@ -7,22 +7,18 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
 import { navigate } from 'gatsby-link';
-import shortid from 'shortid';
 import LollyTemplate from '../components/LollyTemplate';
 import gql from "graphql-tag";
 
-const id = shortid.generate();
-
 const addLollyMutation = gql`
-    mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!, $lollyPath: String!) {
-        addLolly(receiver: $receiver, msg: $msg, sender: $sender, c1: $c1, c2: $c2, c3: $c3, lollyPath: $lollyPath) {
+    mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!) {
+        addLolly(receiver: $receiver, msg: $msg, sender: $sender, c1: $c1, c2: $c2, c3: $c3) {
             msg
             receiver
             sender
             c1
             c2
             c3
-            lollyPath
         }
     }
 `
@@ -59,7 +55,7 @@ const create = () => {
     const submitLollyForm = (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
         addLolly({
             variables: {
-                c1, c2, c3, msg, sender, receiver, lollyPath: id
+                c1, c2, c3, msg, sender, receiver
             }
         }).then((response)=> {
             navigate(`/viewlolly?${response.data.addLolly.lollyPath}`);

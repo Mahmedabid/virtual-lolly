@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Yellowtail&display=swap");
 body {
     text-align: center;
     background-color: #582f50;
@@ -76,6 +77,7 @@ h1:hover {
     margin-left: -10px !important;
     margin-right: -10px !important;
 }
+
 .lollyForm .MuiOutlinedInput-input {
     color: white;
 }
@@ -129,6 +131,59 @@ Link {
     justify-content: center;
 }
 
+.showLollyDiv {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    filter: drop-shadow(0px 0px 10px #000);
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.details {
+    padding: 1em 2em;
+    margin-bottom: 1.5em;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.6) 0 0 10px;
+    text-align: left;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.recipient, .from {
+    font-family: "Yellowtail", cursive;
+    font-size: 1.6em;
+    font-style: normal;
+    text-shadow: #000 0 0 10px;
+    color: rgb(255, 163, 163);
+}
+
+.from {
+    padding-left: 2em;
+}
+
+.copy {
+    height: 30px;
+    width: 60px;
+    margin-top: 1em;
+    box-shadow: 0 0 6px #fa73d9;
+    border: 2px solid #fa73d9;
+    background-color: transparent;
+    font-size: .9em;
+    color: #fa73d9;
+    border-radius: 4em;
+    cursor: pointer;
+    transition: all .3s;
+    padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+    .showLollyDiv {
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 550px) {
     .CreateLolly {
         display: flex;
@@ -136,19 +191,16 @@ Link {
         justify-content: center;
         margin: auto;
     }
-
     .colorPick {
         margin-left: 30px;
         margin-right: 30px;
         margin-top: 10px;
         margin-bottom: 15px;
     }
-
     .inputColor {
         flex-direction: row;
         margin: 10px;
     }
-
     .lollyForm {
         width: 15em;
     }

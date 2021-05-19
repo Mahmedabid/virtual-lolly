@@ -3,7 +3,8 @@ const { ApolloServer, gql } = require('apollo-server-lambda')
 const faunadb = require("faunadb");
 const q = faunadb.query;
 require("dotenv").config();
-const axios = require("axios");
+// const axios = require("axios");
+const shortid = require("shortid");
 
 const typeDefs = gql`
 type Query {
@@ -20,7 +21,7 @@ type Lolly {
   lollyPath: String!
 }
 type Mutation{
-  addLolly ( c1: String!, c2: String!, c3: String!, sender: String!, msg: String!, receiver: String!, lollyPath: String!): Lolly,
+  addLolly ( c1: String!, c2: String!, c3: String!, sender: String!, msg: String!, receiver: String!): Lolly,
 }
 `
 
@@ -55,21 +56,23 @@ const resolvers = {
   Mutation: {
     addLolly: async (_, args) => {
       try {
+        const id = shortid.generate();
+        args.lollyPath = id;
         const result = await client.query(
           q.Create(q.Collection("lolly"), {
             data: args
           })
         );
-        axios
-          .post(
-            "https://api.netlify.com/build_hooks/60a20faca9d48696f31f63c3"
-          )
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.error(error);
-          });
+        // axios
+        //   .post(
+        //     "https://api.netlify.com/build_hooks/60a20faca9d48696f31f63c3"
+        //   )
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.error(error);
+        //   });
           console.log(result);
         return result.data
       }

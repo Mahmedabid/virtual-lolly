@@ -11,34 +11,33 @@ const GetLolly = gql`
             msg
             sender
             receiver
+            lollyPath
         }
     }
 `
 
 export default (props: any) => {
-    console.log(props);
-    
-    // const {loading, error, data} = useQuery(GetLolly, {
-    //     variables: {
-    //         lollyPath: props.lollyPath
-    //     }
-    // });
 
-    // if (loading) {
-    //    return <h1>Loading...</h1>
-    // }
+    const { loading, error, data } = useQuery(GetLolly, {
+        variables: {
+            lollyPath: props.location.search.slice(1)
+        }
+    });
 
-    // if (error) {
-    //     return <h1>Error Try again</h1>
-    // }
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
 
-    // if (data) {
-    //     console.log(data);
-        
-    return (
-        <div>
-            {/* <LollyTemplate <LollyTemplate c1={c1} c2={c2} c3={c3} msg={msg} sender={sender} receiver={receiver} lollyPath={id}/>     */}
-        </div>
-    )
-    // }
+    if (error) {
+        return <h1>Error Try again</h1>
+    }
+
+    if (data) {
+
+        return (
+            <div>
+                <LollyTemplate c1={data.getLolly.c1} c2={data.getLolly.c2} c3={data.getLolly.c3} msg={data.getLolly.msg} sender={data.getLolly.sender} receiver={data.getLolly.receiver} lollyPath={data.getLolly.lollyPath} />
+            </div>
+        )
+    }
 }
