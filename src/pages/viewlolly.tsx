@@ -3,7 +3,7 @@ import { Router } from '@reach/router';
 import React from 'react'
 import LollyTemplate from '../components/LollyTemplate';
 
-const GetLolly = gql`
+const GetLolly_by_path = gql`
     query getLolly($path: String!) {
         getLolly(path: $path) {
             c1
@@ -18,10 +18,9 @@ const GetLolly = gql`
 `
 
 export default (props: any) => {
-    console.log(props);
-    const path = location.pathname.replace("/viewlolly/", "")
+    const path = props.location.pathname.replace("/viewlolly/", "")
 
-    const { loading, error, data } = useQuery(GetLolly, {
+    const { loading, error, data } = useQuery(GetLolly_by_path, {
         variables: {
             path
         }

@@ -13,9 +13,9 @@ interface PageProps {
     path: string
 }
 
-const LollyTemplate: any = ({ c1, c2, c3, msg, sender, receiver, lollyPath }) => {
+const LollyTemplate: React.FC<PageProps> = ({ c1, c2, c3, msg, sender, receiver, lollyPath }) => {
 
-    const path = `https://ahm-vlolly.netlify.app/lolly/${lollyPath}`;
+    const path = `https://ahm-vlolly.netlify.app/viewlolly/${lollyPath}`;
     const [copySuccess, setCopySuccess] = useState('');
 
     const copyToClipboard = () => {

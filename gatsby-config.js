@@ -1,8 +1,3 @@
-var baseUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:8888"
-    : "https://ahm-vlolly.netlify.app";
-
 module.exports = {
   plugins: [
     "gatsby-plugin-typescript",
@@ -14,7 +9,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "allLolly",
         // Url to query from
-        url: `http://localhost:8888/.netlify/functions/newLolly`,
+        url: `https://ahm-vlolly.netlify.app/.netlify/functions/newLolly`,
       },
     },
   ],

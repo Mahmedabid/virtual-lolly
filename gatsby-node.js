@@ -23,7 +23,48 @@ require("dotenv").config();
 //   })
 //     }
 //   test();
-  
+
+// exports.createPages = async function ({ graphql, actions }) {
+
+//   const query = await graphql(`
+//   query {
+//       allLolly{
+//           allLolly{    
+//               receiver
+//               msg
+//               sender
+//               c1
+//               c2
+//               c3
+//               lollyPath
+//           }
+//       }
+//     }
+//         `);
+
+//   console.log(JSON.stringify(query));
+
+//     const posts =   query.data.getLolly.getLolly;
+
+//     posts.map((post) => {
+//         actions.createPage({
+//             path: `/${post.lollyPath}`,
+//             component: require.resolve(`./src/components/LollyTemplate.tsx`),
+//             context: {
+//               c1: post.c1,
+//               c2: post.c2,
+//               c3: post.c3,
+//               msg: post.msg,
+//               sender: post.sender,
+//               receiver: post.c1,
+//               lollyPath: post.lollyPath,
+//             },
+//         });
+//     })
+
+// }
+
+
 exports.createPages = async ({ graphql, actions }) => {
 
   const LollyTemplate = require.resolve(`./src/components/LollyTemplate.tsx`);
