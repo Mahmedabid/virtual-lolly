@@ -1,28 +1,14 @@
-import React from "react"
-import { navigate } from "@reach/router"
-import Header from "../components/Header"
-import { CircularProgress } from "@material-ui/core"
-
-const NotFoundPage = ({ location }) => {
-
-    if (location.pathname !== "/") {
-        console.log("Site Origin :", location.origin)
-
-        navigate(`/viewlolly${location.pathname}`)
-    }
-
-    if (typeof window !== "undefined") {
-        window.location.reload()
-    }
+import * as React from "react"
+import Header from "../components/Header";
+const NotFoundPage = () => {
 
     return (
         <div>
             <Header />
-            <h4 style={{color: 'white'}}>We are getting your lolly....</h4>
-            <div className="loading">
-                <CircularProgress />
-            </div>
+            <h1>404: Not Found</h1>
+            <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
         </div>
     )
 }
+
 export default NotFoundPage

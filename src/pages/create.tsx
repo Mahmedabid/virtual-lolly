@@ -6,8 +6,7 @@ import { useMutation } from "@apollo/client";
 import { Formik, Field, Form } from 'formik';
 import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
-import { navigate } from "@reach/router"
-import LollyTemplate from '../components/LollyTemplate';
+import { navigate } from "gatsby-link"
 import gql from "graphql-tag";
 
 const addLollyMutation = gql`
@@ -55,7 +54,7 @@ const create = () => {
                 c1, c2, c3, msg, sender, receiver
             }
         }).then((response)=> {
-            navigate(`/${response.data.addLolly.lollyPath}`);
+            navigate(`/viewlolly/${response.data.addLolly.lollyPath}`);
         });
     }
 
