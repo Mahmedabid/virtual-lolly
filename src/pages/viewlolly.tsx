@@ -18,7 +18,7 @@ const GetLolly_by_path = gql`
 
 export default (props: any) => {
 
-    if (window) {
+    if (typeof window !== "undefined") {
         var refresh = window.localStorage.getItem('refresh');
         if (refresh === null) {
             window.location.reload();
