@@ -37,28 +37,6 @@ h1 {
     line-height: 1.2;
 }
 
-button, .button {
-    margin-top: 1em;
-    box-shadow: 0 0 6px #fa73d9;
-    border: 2px solid #fa73d9;
-    background-color: transparent;
-    font-size: .9em;
-    color: #fa73d9;
-    padding: 1em 2em;
-    border-radius: 4em;
-    cursor: pointer;
-    transition: all .3s;
-}
-
-.button {
-    padding: .8em 2em;
-}
-
-button:hover, .button:hover {
-    background-color: #fa73d9;
-    color: #222;
-}
-
 h1:hover {
     text-shadow: #fa73d9 0 0 16px;
 }
@@ -175,7 +153,7 @@ Link {
     border-radius: 4em;
     cursor: pointer;
     transition: all .3s;
-    padding: 0;
+    padding: 0 !important;
 }
 
 @media screen and (max-width: 500px) {

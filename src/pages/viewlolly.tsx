@@ -16,7 +16,7 @@ const GetLolly_by_path = gql`
     }
 `
 
-export default (props: any) => {
+export default ({location}) => {
 
     if (typeof window !== "undefined") {
         var refresh = window.localStorage.getItem('refresh');
@@ -25,7 +25,7 @@ export default (props: any) => {
             window.localStorage.setItem('refresh', "1");
         }
     }
-    const path = props.location.pathname.replace("/viewlolly/", "")
+    const path = location.pathname.replace("/viewlolly/", "")
 
     const { loading, error, data } = useQuery(GetLolly_by_path, {
         variables: {

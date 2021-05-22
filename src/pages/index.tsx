@@ -2,6 +2,7 @@ import React from 'react';
 import { Lolly } from "../components/Lolly"
 import Header from "../components/Header";
 import { navigate } from 'gatsby';
+import Button from '../components/Button/Button';
 
 const IndexPage = () => {
 
@@ -18,7 +19,7 @@ const IndexPage = () => {
         <Lolly LollyTop="rgb(47, 216, 216)" LollyMiddle="rgb(81, 93, 255)" LollyBottom="rgb(181, 66, 235)" />
         <Lolly LollyTop="rgb(111, 25, 151)" LollyMiddle="rgb(151, 25, 109)" LollyBottom="rgb(151, 25, 52)" />
       </div>
-      <button className="button" onClick={createPageNav}>Create a Lolly</button>
+      <Button onClick={createPageNav} value="Create a Lolly" />
     </div>
   );
 }

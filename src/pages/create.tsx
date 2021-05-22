@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import { InputBase, TextField } from '@material-ui/core';
 import { navigate } from "gatsby-link"
 import gql from "graphql-tag";
+import Button from '../components/Button/Button';
 
 const addLollyMutation = gql`
     mutation addLolly($receiver: String!, $msg: String!, $sender: String!, $c1: String!, $c2: String!, $c3: String!) {
@@ -107,7 +108,7 @@ const create = () => {
                                 <br />
                                 <Field className="inputs" helperText={formik.touched.sender ? formik.errors.sender : ""} error={formik.touched.sender && Boolean(formik.errors.sender)} name="sender" type="text" as={TextField} label="From" variant="outlined" />
                                 <br />
-                                <input type="submit" name="Create" className="button" />
+                                <Button type="submit" value="Create" padding='.8em 2em' />
                             </div>
                         </div>
                     </Form>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from './Button/Button';
 import Header from './Header'
 import { Lolly } from './Lolly'
 
@@ -37,7 +38,7 @@ const LollyTemplate: React.FC<PageProps> = ({ c1, c2, c3, msg, sender, receiver,
                     <p className="share" >Your Lolly is freezing. Share it with this link:</p>
                     <pre>{path}</pre>
                     <div>
-                        <button className="copy" onClick={copyToClipboard}>Copy</button>
+                        <Button className="copy" onClick={copyToClipboard} value="Copy" />
                         &nbsp;{copySuccess}
                     </div>
                     <br />
