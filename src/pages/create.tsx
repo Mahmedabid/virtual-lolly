@@ -55,7 +55,7 @@ const create = () => {
                 c1, c2, c3, msg, sender, receiver
             }
         }).then((response)=> {
-            navigate(`/viewlolly/${response.data.addLolly.lollyPath}`);
+            navigate(`https://ahm-vlolly.netlify.app/viewlolly/${response.data.addLolly.lollyPath}`);
         });
     }
 

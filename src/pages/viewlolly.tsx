@@ -18,13 +18,13 @@ const GetLolly_by_path = gql`
 
 export default ({location}) => {
 
-    if (typeof window !== "undefined") {
-        var refresh = window.localStorage.getItem('refresh');
-        if (refresh === null) {
-            window.location.reload();
-            window.localStorage.setItem('refresh', "1");
-        }
-    }
+    // if (typeof window !== "undefined") {
+    //     var refresh = window.localStorage.getItem('refresh');
+    //     if (refresh === null) {
+    //         window.location.reload();
+    //         window.localStorage.setItem('refresh', "1");
+    //     }
+    // }
     const path = location.pathname.replace("/viewlolly/", "")
 
     const { loading, error, data } = useQuery(GetLolly_by_path, {
