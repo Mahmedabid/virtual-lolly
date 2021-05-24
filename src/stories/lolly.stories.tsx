@@ -1,4 +1,5 @@
 import React from 'react';
+import { Lolly } from '../components/Lolly';
 
 export default {
   title: 'Lolly',
