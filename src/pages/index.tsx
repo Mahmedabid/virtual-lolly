@@ -1,8 +1,8 @@
 import React from 'react';
 import { Lolly } from "../components/Lolly"
 import Header from "../components/Header";
-import { navigate } from 'gatsby';
 import Button from '../components/Button/Button';
+import { Link } from 'gatsby';
 
 const IndexPage = () => {
 
