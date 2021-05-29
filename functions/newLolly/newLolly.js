@@ -29,7 +29,7 @@ const client = new faunadb.Client({ secret: process.env.FAUNADB_SECRET });
 
 const resolvers = {
   Query: {
-    getLolly: async (_, {path}) => {
+    getLolly: async (_, { path }) => {
       try {
         const result = await client.query(
           q.Get(q.Match(q.Index("lolly_path"), path))
@@ -38,7 +38,7 @@ const resolvers = {
         return result.data
       }
       catch (error) {
-        console.log(error);
+        console.log('specific lolly', error);
       }
     },
     allLolly: async (_, args) => {
@@ -49,7 +49,7 @@ const resolvers = {
 
         return result.data
       } catch (error) {
-        console.log(error);
+        console.log('all lollies', error);
       }
     },
   },
@@ -73,7 +73,7 @@ const resolvers = {
         //   .catch(function (error) {
         //     console.error(error);
         //   });
-          console.log(result);
+        console.log(result);
         return result.data
       }
       catch (error) {

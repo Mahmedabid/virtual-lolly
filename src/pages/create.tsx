@@ -26,7 +26,7 @@ const addLollyMutation = gql`
 
 const create = () => {
 
-    const [addLolly, { loading }] = useMutation(addLollyMutation)
+    const [addLolly, { loading, error }] = useMutation(addLollyMutation)
 
     const initialValues = {
         c1: '#d323d3',
@@ -49,12 +49,12 @@ const create = () => {
             .required('Message is Required'),
     });
 
-    const submitLollyForm = async(c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
+    const submitLollyForm = async (c1: string, c2: string, c3: string, msg: string, sender: string, receiver: string) => {
         await addLolly({
             variables: {
                 c1, c2, c3, msg, sender, receiver
             }
-        }).then((response)=> {
+        }).then((response) => {
             navigate(`https://ahm-vlolly.netlify.app/viewlolly/${response.data.addLolly.lollyPath}`);
         });
     }
@@ -66,6 +66,8 @@ const create = () => {
             </div>
         )
     }
+
+    error ? console.log('create', error) : null;
 
     return (
         <div>

@@ -57,7 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
           });
         }
     catch(error) {
-        console.log(error);
+        console.log('node', error);
     }
 }
 

@@ -38,6 +38,9 @@ export default ({location}) => {
     }
 
     if (error) {
+
+        console.log('viewLolly', error);
+        
         return <h1>Error Try again</h1>
     }
 
